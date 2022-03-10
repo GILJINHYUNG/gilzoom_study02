@@ -14,7 +14,12 @@ const httpServer = http.createServer(app);
 const wsServer = SocketIO(httpServer);
 
 wsServer.on('connection', (socket) => {
-  console.log(socket);
+  socket.on('enter_room', (msg, done) => {
+    console.log(msg,);
+    setTimeout(()=>{
+      done();
+    }, 1000);
+  });
 });
 
 const handleListen = () => console.log('server http://localhost:3000!!!');
